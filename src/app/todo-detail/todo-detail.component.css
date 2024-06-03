@@ -1,0 +1,29 @@
+.todo-detail-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ba7e7e;
+}
+
+.todo-detail-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.todo-detail-content {
+  margin-bottom: 10px;
+}
+
+.todo-detail-label {
+  font-weight: bold;
+  color: white;
+}
+
+.todo-detail-value {
+  margin-left: 5px;
+  color: white;
+}

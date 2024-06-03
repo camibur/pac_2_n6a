@@ -1,13 +1,46 @@
 import { Component } from '@angular/core';
-import { TodosService } from '../todos.service';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.scss'],
+  styleUrls: ['./todos.component.css']
 })
 export class TodosComponent {
-  constructor(private todosService: TodosService) {}
+  todos: any[] = [];
+  filteredTodos: any[] = [];
+  searchTerm: string = '';
 
-  randomMethod() {}
+  constructor(private router: Router, private http: HttpClient) {
+    this.getTodos();
+  }
+
+  getTodos() {
+    this.http.get<any[]>('https://jsonplaceholder.typicode.com/todos')
+      .subscribe(data => {
+        this.todos = data;
+        this.filterTodos();
+      });
+  }
+
+  filterTodos() {
+    if (this.searchTerm.trim() === '') {
+      this.filteredTodos = this.todos;
+    } else {
+      this.filteredTodos = this.todos.filter(todo => todo.title.toLowerCase().includes(this.searchTerm.toLowerCase()));
+    }
+  }
+
+  updateSearchButton() {
+    return this.searchTerm.length > 0;
+  }
+
+  searchTodos() {
+    this.filterTodos();
+  }
+
+  verDetalle(id: number) {
+    this.router.navigate(['/todos', id]);
+  }
 }

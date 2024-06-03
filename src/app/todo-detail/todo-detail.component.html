@@ -1,0 +1,15 @@
+<div class="todo-detail-container" *ngIf="todo">
+  <h2 class="todo-detail-header">Detalles del Todo</h2>
+  <div class="todo-detail-content">
+    <p class="todo-detail-label">ID:</p>
+    <p class="todo-detail-value">{{ todo.id }}</p>
+  </div>
+  <div class="todo-detail-content">
+    <p class="todo-detail-label">Título:</p>
+    <p class="todo-detail-value">{{ todo.title }}</p>
+  </div>
+  <div class="todo-detail-content">
+    <p class="todo-detail-label">Completado:</p>
+    <p class="todo-detail-value">{{ todo.completed ? 'Sí' : 'No' }}</p>
+  </div>
+</div>
